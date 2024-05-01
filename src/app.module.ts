@@ -3,7 +3,7 @@ import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
-import { AppResolver } from 'src/app.resolver';
+import { ScheduleModule } from '@nestjs/schedule';
 import { DatabaseModule } from 'src/database/database.module';
 import { EarthquakeModule } from 'src/earthquake/earthquake.module';
 
@@ -19,9 +19,9 @@ import { EarthquakeModule } from 'src/earthquake/earthquake.module';
       playground: true,
     }),
     EarthquakeModule,
+    ScheduleModule.forRoot(),
   ],
   providers: [
-    AppResolver,
     {
       provide: APP_PIPE,
       useValue: new ValidationPipe({ transform: true }),

@@ -11,7 +11,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch",
+    "start:dev": "TZ=UTC nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -22,7 +22,7 @@
     "test:e2e": "cross-env NODE_ENV=test jest --config ./jest-e2e.config.ts --runInBand",
     "test:e2e:watch": "npm run test:e2e -- --watch",
     "typeorm": "ts-node -r tsconfig-paths/register -r dotenv/config ./node_modules/.bin/typeorm -d src/database/datasource.ts",
-    "codegen:earthquakeapi": "openapi-typescript ./src/earthquake/client/earthquake-api-openapi-spec.json -o ./src/earthquake/client/earthquake-api.d.ts"
+    "repl": " TZ=UTC nest start --entryFile repl --watch"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",
@@ -34,6 +34,7 @@
     "@nestjs/graphql": "^12.1.1",
     "@nestjs/platform-express": "^10.3.8",
     "@nestjs/platform-fastify": "^10.3.8",
+    "@nestjs/schedule": "^4.0.2",
     "@nestjs/typeorm": "^10.0.2",
     "bluebird": "^3.7.2",
     "class-transformer": "^0.5.1",
@@ -53,6 +54,7 @@
     "typescript-eslint": "^7.8.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@nestjs/cli": "^10.3.2",
     "@nestjs/schematics": "^10.1.1",
     "@nestjs/testing": "^10.3.8",

@@ -1,4 +1,4 @@
-export interface QueryResponse {
+export interface EarthquakesGeoJSONResponse {
   type: string;
   metadata: Metadata;
   features: Feature[];
@@ -22,32 +22,32 @@ export interface Feature {
 }
 
 export interface Properties {
-  mag: number;
-  place: string;
-  time: number;
-  updated: number;
-  tz: any;
-  url: string;
-  detail: string;
+  mag?: number;
+  place?: string;
+  time?: number;
+  updated?: number;
+  tz?: any;
+  url?: string;
+  detail?: string;
   felt?: number;
   cdi?: number;
   mmi?: number;
   alert?: string;
-  status: string;
-  tsunami: number;
-  sig: number;
-  net: string;
-  code: string;
-  ids: string;
-  sources: string;
-  types: string;
+  status?: string;
+  tsunami?: number;
+  sig?: number;
+  net?: string;
+  code?: string;
+  ids?: string;
+  sources?: string;
+  types?: string;
   nst?: number;
   dmin?: number;
-  rms: number;
+  rms?: number;
   gap?: number;
-  magType: string;
-  type: string;
-  title: string;
+  magType?: string;
+  type?: string;
+  title?: string;
 }
 
 export interface Geometry {

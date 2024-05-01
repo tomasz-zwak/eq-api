@@ -1,5 +1,5 @@
-import { AppModule } from '@app/app.module';
 import { Test } from '@nestjs/testing';
+import { AppModule } from 'src/app.module';
 
 export async function createTestingModule() {
   const testingModule = Test.createTestingModule({

@@ -5,7 +5,7 @@
  * Do not make direct changes to the file.
  */
 
-import { QueryResponse } from '@app/earthquake/client/earthquake-api-query-response.type';
+import { EarthquakesGeoJSONResponse } from 'src/earthquake/client/earthquake-api-query-response.type';
 
 export interface paths {
   '/version': {
@@ -121,7 +121,7 @@ export interface operations {
       /** @description Successful Response */
       200: {
         // patched manually with TS interface generated from response
-        content: { 'application/json': QueryResponse };
+        content: { 'application/json': EarthquakesGeoJSONResponse };
       };
     };
   };

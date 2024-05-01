@@ -1,4 +1,4 @@
-import { getApplication } from '@test/utils/getApplication';
+import { getApplication } from 'test/utils/getApplication';
 import { DataSource } from 'typeorm';
 
 beforeEach(async () => {
