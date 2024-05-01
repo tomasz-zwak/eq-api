@@ -6,7 +6,8 @@
 2. Run the API with script `./start-dev-local.sh` (you may get permission error, if you do use `chmod u+x start-dev-local.sh`)
 3. Enter GraphQL playground `http://localhost:3000/graphql`
 4. In 5 seconds after starting the app a synchronization will run, you will see the log: `Earthquakes synchronization started`, it may take a few seconds until the process is finished
-5. You may use the following query in GraphQL Playground to list the entries:
+5. There's a cron job that triggers every day at midnight to synchronize new earthquake entries with the database.
+6. You may use the following query in GraphQL Playground to list the entries:
 
 ```
 query ListEarthquakes {
