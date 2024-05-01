@@ -19,8 +19,8 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "paths": {
-      "@app/*": ["./src/*"],
-      "@test/*": ["./test/*"]
+      "src/*": ["./src/*"],
+      "test/*": ["./test/*"]
     }
   }
 }

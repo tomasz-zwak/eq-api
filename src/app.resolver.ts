@@ -1,9 +1,10 @@
 import { Query, Resolver } from '@nestjs/graphql';
+import GraphQLJSON from 'graphql-type-json';
 
 @Resolver()
 export class AppResolver {
-  @Query(() => String)
-  test() {
-    return 'asd';
+  @Query(() => GraphQLJSON)
+  async test() {
+    return 'test';
   }
 }

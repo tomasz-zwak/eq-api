@@ -1,10 +1,11 @@
-import { AppResolver } from '@app/app.resolver';
-import { DatabaseModule } from '@app/database/database.module';
-import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
+import { AppResolver } from 'src/app.resolver';
+import { DatabaseModule } from 'src/database/database.module';
+import { EarthquakeModule } from 'src/earthquake/earthquake.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { GraphQLModule } from '@nestjs/graphql';
       autoSchemaFile: true,
       playground: true,
     }),
+    EarthquakeModule,
   ],
   providers: [
     AppResolver,
