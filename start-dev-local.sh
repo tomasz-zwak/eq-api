@@ -1,33 +1,15 @@
 rm -fr ./build
 
-read -r -d '' INSTALL_PACKAGES_SCRIPT << EOF
-  require('concurrently')([
-    {
-      name: 'API',
-      command: 'npm install',
-      prefixColor: 'cyan',
-    },
-  ]);
-EOF
-
-if [ $? != 0 ]; then
-  cp .env.example .env
-  echo "Warning: The .env.example was copied to .env file" >&2;
+if [ ! -f .env ]; then
+    # Copy contents of .env.example to .env
+    cp .env.example .env
+    echo "Copied .env.example to .env"
 fi
 
-read -r -d '' RUN_APP_SCRIPT << EOF
-  require('concurrently')([
-    {
-      name: ' - DB  - ',
-      command: 'docker-compose up -d',
-      prefixColor: 'blue',
-    },
-    {
-      name: ' - API - ',
-      command: 'TZ=UTC npm run start:dev',
-      prefixColor: 'white',
-    },
-  ]);
-EOF
+docker-compose up -d
 
-echo "$RUN_APP_SCRIPT" | npx dotenv-cli -e .env node
+npm install
+
+npm run typeorm migration:run
+
+npm run start:dev

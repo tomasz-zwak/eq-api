@@ -24,8 +24,10 @@ export class EarthquakeService {
 
   async getEarthquakes(
     pagination: Pagination,
-    { date, state, country }: EarthquakeFiltersInput,
+    input?: EarthquakeFiltersInput,
   ): Promise<Earthquakes> {
+    const date = input?.date || new Date();
+
     const startOfDay = new Date(date);
     startOfDay.setHours(0, 0, 0, 0);
 
@@ -48,15 +50,15 @@ export class EarthquakeService {
       .take(pagination.perPage)
       .skip((pagination.page - 1) * pagination.perPage);
 
-    if (state) {
+    if (input?.state) {
       earthquakesQuery.andWhere('earthquake.state LIKE :state', {
-        state: `%${state.toLowerCase()}%`,
+        state: `%${input?.state.toLowerCase()}%`,
       });
     }
 
-    if (country) {
+    if (input?.country) {
       earthquakesQuery.andWhere('earthquake.country LIKE :country', {
-        state: `%${country.toLowerCase()}%`,
+        state: `%${input?.country.toLowerCase()}%`,
       });
     }
 

@@ -25,8 +25,12 @@ export class EarthquakeResolver {
       defaultValue: DefaultPagination,
     })
     pagination: Pagination,
-    @Args('earthquakesInput', { type: () => EarthquakeFiltersInput })
-    earthquakeFiltersInput: EarthquakeFiltersInput,
+    @Args('earthquakesInput', {
+      type: () => EarthquakeFiltersInput,
+      nullable: true,
+      description: 'Returns entries for current date if nothing provided.',
+    })
+    earthquakeFiltersInput?: EarthquakeFiltersInput,
   ) {
     return this.earthquakeService.getEarthquakes(
       pagination,

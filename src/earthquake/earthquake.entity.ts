@@ -183,8 +183,6 @@ export class Earthquake implements Partial<EarthquakeProperties> {
 export class EarthquakeFiltersInput {
   @Field(() => Date, {
     nullable: true,
-    defaultValue: new Date(),
-    description: 'Uses current date if not provided.',
   })
   date: Date;
 
