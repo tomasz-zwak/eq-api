@@ -62,8 +62,6 @@ export class EarthquakeService {
       });
     }
 
-    console.log(earthquakesQuery.getSql(), earthquakesQuery.getParameters());
-
     const [entries, count] = await earthquakesQuery.getManyAndCount();
 
     return { entries, total: count };
