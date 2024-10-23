@@ -26,7 +26,7 @@ export interface Properties {
   place?: string;
   time?: number;
   updated?: number;
-  tz?: any;
+  tz?: string;
   url?: string;
   detail?: string;
   felt?: number;

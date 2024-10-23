@@ -5,6 +5,7 @@ import {
   OmitType,
   PartialType,
 } from '@nestjs/graphql';
+import { ApiProperty } from '@nestjs/swagger';
 import {
   Feature as GeoJSONProperties,
   Geometry as GeoJSONGeometry,
@@ -38,24 +39,29 @@ export class Geometry implements GeoJSONGeometry {
 @Entity({ name: 'earthquake' })
 @ObjectType()
 export class Earthquake implements Partial<EarthquakeProperties> {
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: string;
 
+  @ApiProperty()
   @CreateDateColumn()
   createdAt: Date;
-
+  @ApiProperty()
   @Column({ name: 'external_id', type: 'varchar', unique: true })
   @Field(() => String, { name: 'id' })
   externalId: GeoJSONProperties['id'];
 
+  @ApiProperty()
   @Column()
   @Field()
   state: string;
 
+  @ApiProperty()
   @Column()
   @Field()
   country: string;
 
+  @ApiProperty()
   @Column({ type: 'jsonb', nullable: true })
   @Field(() => Geometry)
   geometry?: Geometry;
